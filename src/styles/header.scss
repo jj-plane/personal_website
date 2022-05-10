@@ -1,0 +1,29 @@
+@use './main.scss';
+
+nav{
+    background:var(--nav-background);
+    transition: background ease-in-out .5s;
+    .navContainer{
+        margin:0 auto;
+        max-width:800px;
+        padding: 1.25rem 1rem;
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        color:var(--nav-text);
+
+        .logo{
+            margin-bottom: 0;
+            font-size:2.25rem;
+            color:inherit;
+            text-decoration:none;
+            cursor: pointer;
+        }
+        .themePicker{
+            cursor: pointer;
+            font-size:1.75rem;
+            border:0;
+            background:none;
+        }
+    }
+}

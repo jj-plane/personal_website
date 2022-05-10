@@ -1,0 +1,194 @@
+:root{
+    --background:#FAFAFF;
+    --text-primary:#707070;
+    --accent:#087E8B;
+    --nav-background:#707070;
+    --nav-text:#FAFAFF;
+    
+    --footer-background:#707070;
+}
+
+[data-theme='dark'] {
+    --background: #2C313A;
+    --text-primary: #FAFAFF;
+    --accent: #97C475;
+    --nav-background: #FAFAFF;
+    --nav-text:#2C313A;
+    --footer-background:#FAFAFF;
+    
+}
+
+h1, h2, h3, h4, h5, p, a, caption, figcaption, ul, li{
+    font-family: 'Roboto', sans-serif;
+    font-weight:300;
+    line-height: 1.67;
+}
+
+code{
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
+}
+
+pre[class*=language-]:before, pre[class*=language-]:after{
+    display: none;
+}
+
+
+.layout{
+    background:var(--background);
+    height:100%;
+    transition: background ease-in-out .25s;
+
+    .wrapper{
+        display:grid;
+        grid-template-columns: 
+        1fr
+        //Sass is case sensitive and min is keyword so we avoid issue by capitilizing MIN because CSS doesn't care
+        MIN(99ch, 100%)
+        1fr;
+
+        //Constrain all content within center column
+        *{
+            grid-column:2
+        }
+
+        //allow certain things like images to be 100% width
+        .fullBleed{
+            width:100%;
+            grid-column: 1/4;
+        }
+    }
+}
+
+main{
+    min-height: calc(100vh - 120px);
+    color:var(--text-primary);
+    transition: color ease-in-out .25s, background-color ease-in-out .25s;
+    padding:0 .5rem;
+}
+
+.heroContainer{
+    //margin-top:6rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 150px 325px 250px;
+
+    .greetingContainer {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        h1{
+            text-align: center;
+            font-size: 5rem;
+            font-weight: 300;
+        }
+    }
+    
+
+    .selfieContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .selfie{
+            max-width: 300px;
+            filter: drop-shadow(3px 3px 4px var(--accent));
+            transition: all ease-in-out .25s;
+        }
+    }
+
+    .shortDescriptionContainer{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        h2{
+            font-weight: 300;
+            font-size:1.35rem;
+        }
+        .accent{
+            color:var(--accent);
+            font-weight: 500;
+        }
+
+        .aboutMeLink{
+            font-weight: 700;
+            text-decoration: none;
+            color: inherit;
+            font-size: 1.25rem;
+            margin-top:.75rem;
+        }
+    }
+
+    @media (min-width: 998px){
+        margin-top:2rem;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+
+        .greetingContainer {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 1;
+            grid-row-end: 2;
+            justify-content: flex-start;
+            padding-left:2rem;
+        }
+
+        .selfieContainer{
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 1;
+            grid-row-end: 3;
+            align-items: flex-end;
+        }
+
+        .shortDescriptionContainer{
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 2;
+            grid-row-end: 3;
+            text-align: left;
+            padding-left:2rem;
+        }
+    }
+}
+
+.postContainer{
+    @media (min-width:998px){
+        margin-top:6rem;
+    }
+    //background:teal;
+    .postContainerHeadings{
+        display: flex;
+        justify-content: space-between;
+        border-bottom: solid 2px var(--accent);
+        margin-bottom:.5rem;
+    }
+
+    .postListing{
+        a{
+            color:#707070;
+            border:2px solid #707070;
+            border-radius: .25rem;
+            width:100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            padding:1rem 1rem;
+            margin:1rem 0;
+            text-align: end;
+            font-size:1.15rem;
+            background:#FAFAFF;
+            filter: drop-shadow(2px 4px 0px var(--accent));
+            transition: all .15s ease-in-out;
+
+            &:hover{
+                //transform: translateY(-3px);
+                transform: translateY(-3px);
+            }
+
+            span{
+                font-weight: 300;
+            }
+        }
+
+    }
+}
