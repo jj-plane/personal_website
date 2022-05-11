@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from './header'
 import Footer from './footer'
 import useLocalStorage from "use-local-storage"
@@ -7,8 +7,8 @@ import gsap from 'gsap'
 import { motion } from 'framer-motion'
 
 export default function Layout({children}){
-    const defaultDark = window.matchMedia('(prefers-color-scheme:dark)').matches;
-    const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
+
+    const [theme, setTheme] = useLocalStorage('theme', 'dark' ? 'dark' : 'light');
 
     const themeIcon = React.useRef();
     const lowerThemeIcon = (e) => {
