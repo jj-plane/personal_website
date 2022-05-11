@@ -8,10 +8,10 @@ import { motion } from 'framer-motion'
 
 export default function Layout({children}){
 
-    const defaultDark = typeof window != 'undefined' ? window.matchMedia('(prefers-color-scheme:dark)').matches : false;
-    const persistedTheme = typeof window != 'undefined' ? window.localStorage.getItem('theme') : false;
-    const [theme, setTheme] = useLocalStorage('theme', persistedTheme ? persistedTheme : defaultDark == true ? 'dark' : 'light');
-
+    const defaultDark = typeof window !== 'undefined' ? window.matchMedia('(prefers-color-scheme:dark)').matches : false;
+    const persistedTheme = typeof window !== 'undefined' ? window.localStorage.getItem('theme') : null;
+    
+    const [theme, setTheme] = useLocalStorage('theme', persistedTheme ? persistedTheme : defaultDark === true ? 'dark' :' light')
     const themeIcon = React.useRef();
     const lowerThemeIcon = (e) => {
         e.preventDefault();
@@ -22,12 +22,13 @@ export default function Layout({children}){
     }
 
     const switchTheme = () => {
-      const newTheme = theme === 'light' ? 'dark' : 'light';
-      setTheme(newTheme);
-      raiseThemeIcon();  
+       const newTheme = theme === 'light' ? 'dark' : 'light';
+       setTheme(newTheme);
+       raiseThemeIcon();  
     }
     return(
-        <div data-theme={theme} className="layout">
+        <div className="layout" data-theme={theme}>
+            <p>{theme}</p>
             <Header changeTheme={lowerThemeIcon} theme={theme} themeRef={themeIcon}></Header>
             <main>
                 <div className='wrapper'>
