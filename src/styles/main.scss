@@ -179,6 +179,7 @@ main{
             background:#FAFAFF;
             filter: drop-shadow(2px 4px 0px var(--accent));
             transition: all .15s ease-in-out;
+            cursor: pointer;
 
             &:hover{
                 //transform: translateY(-3px);
