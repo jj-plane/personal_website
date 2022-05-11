@@ -8,12 +8,9 @@ import { motion } from 'framer-motion'
 
 export default function Layout({children}){
 
-    let defaultDark;
+    const defaultDark = typeof window != 'undefined' ? window.matchMedia('(prefers-color-scheme:dark)').matches : false;
     const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
-    
-    useEffect(() => {
-        defaultDark = window.matchMedia('(prefers-color-scheme:dark)').matches;
-    })
+
     const themeIcon = React.useRef();
     const lowerThemeIcon = (e) => {
         e.preventDefault();
