@@ -1,7 +1,6 @@
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 
-import gsap from "gsap"
 import "../styles/footer.scss"
 
 class footer extends React.Component{
@@ -15,11 +14,13 @@ class footer extends React.Component{
                         src="../images/gatsby_monogram.png"
                         height={iconSize}
                         width={iconSize}
+                        alt="gatsby logo"
                     /> 
                     <StaticImage 
                         src="../images/netlify_logo.png"
                         height={iconSize}
                         width={iconSize}
+                        alt="netlify logo"
                     />
                     <span className="emoji">☕</span>
                 </div>
