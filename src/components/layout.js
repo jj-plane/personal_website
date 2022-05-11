@@ -28,7 +28,6 @@ export default function Layout({children}){
     }
     return(
         <div className="layout" data-theme={theme}>
-            <p>{theme}</p>
             <Header changeTheme={lowerThemeIcon} theme={theme} themeRef={themeIcon}></Header>
             <main>
                 <div className='wrapper'>
