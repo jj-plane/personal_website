@@ -9,7 +9,8 @@ import { motion } from 'framer-motion'
 export default function Layout({children}){
 
     const defaultDark = typeof window != 'undefined' ? window.matchMedia('(prefers-color-scheme:dark)').matches : false;
-    const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
+    const persistedTheme = typeof window != 'undefined' ? window.localStorage.getItem('theme') : false;
+    const [theme, setTheme] = useLocalStorage('theme', persistedTheme ? persistedTheme : defaultDark == true ? 'dark' : 'light');
 
     const themeIcon = React.useRef();
     const lowerThemeIcon = (e) => {
@@ -28,6 +29,7 @@ export default function Layout({children}){
     return(
         <div data-theme={theme} className="layout">
             <Header changeTheme={lowerThemeIcon} theme={theme} themeRef={themeIcon}></Header>
+            <p>Theme: {theme}</p>
             <main>
                 <div className='wrapper'>
                     <motion.main
