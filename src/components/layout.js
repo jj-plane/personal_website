@@ -8,11 +8,7 @@ import { motion } from 'framer-motion'
 
 export default function Layout({children}){
 
-    let defaultDark;
-    React.useRef(() => {
-        defaultDark = window.matchMedia('(prefers-color-scheme:dark)').matches;
-    })
-
+    const defaultDark = window.matchMedia('(prefers-color-scheme:dark)').matches;
     const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
 
     const themeIcon = React.useRef();
@@ -23,7 +19,7 @@ export default function Layout({children}){
     const raiseThemeIcon = () => {
         gsap.fromTo(themeIcon.current, {y:28, opacity:0}, {y:0, opacity:1, duration:.25})
     }
-  
+
     const switchTheme = () => {
       const newTheme = theme === 'light' ? 'dark' : 'light';
       setTheme(newTheme);
