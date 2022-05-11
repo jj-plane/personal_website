@@ -29,7 +29,6 @@ export default function Layout({children}){
     return(
         <div data-theme={theme} className="layout">
             <Header changeTheme={lowerThemeIcon} theme={theme} themeRef={themeIcon}></Header>
-            <p>Theme: {theme}</p>
             <main>
                 <div className='wrapper'>
                     <motion.main
