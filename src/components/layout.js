@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import Header from './header'
 import Footer from './footer'
 import useLocalStorage from "use-local-storage"
@@ -8,13 +8,10 @@ import { motion } from 'framer-motion'
 
 export default function Layout({children}){
 
-    const defaultDark = typeof window !== 'undefined' ? window.matchMedia('(prefers-color-scheme:dark)').matches : false;
+    //const defaultDark = typeof window !== 'undefined' ? window.matchMedia('(prefers-color-scheme:dark)').matches : false;
     const persistedTheme = typeof window !== 'undefined' ? window.localStorage.getItem('theme') : null;
     
-    useEffect(() => {
-        console.log(theme)
-    })
-    const [theme, setTheme] = useLocalStorage('theme', persistedTheme !== null ? persistedTheme : defaultDark === true ? 'dark' :' light')
+    const [theme, setTheme] = useLocalStorage('theme', persistedTheme !== null ? persistedTheme : 'light')
     const themeIcon = React.useRef();
     const lowerThemeIcon = (e) => {
         e.preventDefault();
