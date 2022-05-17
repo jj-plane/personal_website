@@ -18,28 +18,9 @@ const IndexPage = ({
 }) => {
 
 
-
-
-  function animateShadow(e){
-    console.log(e);
-  }
-
-  function throttle(callback, interval){
-    let enableCall = true;
-
-    return function(...args){
-      if(!enableCall) return;
-
-      enableCall = false;
-      callback.apply(this, args);
-      setTimeout(() => enableCall = true, interval);
-    }
-  }
-
-
   const Posts = edges
     .filter(edge => !!edge.node.frontmatter.date)
-    .map(edge => <PostLink animate={animateShadow} key={edge.node.id} className="postLink" post={edge.node} />)
+    .map(edge => <PostLink key={edge.node.id} className="postLink" post={edge.node} />)
 
   return (
         <Layout>
